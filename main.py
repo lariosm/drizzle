@@ -14,8 +14,8 @@ url = url + os.getenv('API_KEY')
 url = url + "&units=imperial"
 
 r = requests.get(url)
-
 data = json.loads(r.text)
+
 next_day = data["daily"][1]
 weather_tomorrow = next_day["weather"][0]
 startRainTime = 0
