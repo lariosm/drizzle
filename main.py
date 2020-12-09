@@ -4,10 +4,8 @@ from datetime import datetime
 import requests
 import json
 
-timestamp = 1545730073
-dt_object = datetime.fromtimestamp(timestamp)
-
-print("dt_object =", dt_object)
+def is_raining(value):
+    return value >= 500 and value < 600
 
 url = "https://api.openweathermap.org/data/2.5/onecall"
 url = url + "?lat=44.950433005684886&lon=-122.99038677842634"
@@ -1390,4 +1388,15 @@ x = """{
 }"""
 
 y = json.loads(x)
-print(y)
+next_day = y["daily"][1]
+weather_tomorrow = next_day["weather"][0]
+startRainTime = 0
+if is_raining(weather_tomorrow["id"]):
+    for i in range(int(len(y["hourly"]) / 2)):
+        current_hour_weather = y["hourly"][i]["weather"][0]["id"]
+        if is_raining(current_hour_weather):
+            startRainTime = datetime.fromtimestamp(y["hourly"][i]["dt"])
+            break
+    print(f"It will start raining at: {startRainTime}")
+else:
+    print("it will not rain")
