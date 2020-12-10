@@ -13,17 +13,23 @@ def getTomorrowForecast(data):
 def getTomorrowAt(data, hour):
     return data["hourly"][hour]["weather"][0]["id"]
 
+def getHourlyAt(data, hour):
+    return data["hourly"][hour]["dt"]
+
 def phoneMessage(data, message):
     weather_tomorrow = getTomorrowForecast(data)
 
     if is_raining(weather_tomorrow["id"]):
         startRainTime = 0
+
         for i in range(int(len(data["hourly"]) / 2)):
             current_hour_weather = getTomorrowAt(data,i)
+            
             if is_raining(current_hour_weather):
-                currentTime = data["hourly"][i]["dt"]
+                currentTime = getHourlyAt(data,i)
                 startRainTime = datetime.fromtimestamp(currentTime)
                 break
+            
         time_of_day = startRainTime.strftime("%I:%M %p")
         midnight = getMidnight()
         when = "tomorrow" if startRainTime > midnight else "tonight"
