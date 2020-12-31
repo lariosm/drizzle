@@ -9,6 +9,7 @@ flake8 = "*"
 [packages]
 requests = "*"
 gunicorn = "*"
+celery = {extras = ["redis"], version = "*"}
 
 [requires]
 python_version = "3.8"
