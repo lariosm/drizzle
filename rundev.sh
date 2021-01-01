@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -a
-. ./settings.env  # Loads environment variables from .env file
+. ./.env
 set +a
 
-python main.py  # Runs the program
+python main.py
