@@ -8,9 +8,9 @@ app = Celery("tasks",
              include=["main"])
 
 app.conf.beat_schedule = {
-    # sends out an email every day at 9:30 AM
+    # sends out an email every day at 5:30 PM UTC (9:30 AM Pacific Time)
     "trigger-email-notifications": {
         "task": "send_email",
-        "schedule": crontab(minute="30", hour="9", day="*")
+        "schedule": crontab(minute="30", hour="17")
     }
 }
