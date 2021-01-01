@@ -4,4 +4,4 @@ set -a
 set +a
 
 # python main.py
-celery -A main worker -B -Q celery -l DEBUG
+celery -A tasks worker -B -Q celery -l DEBUG
