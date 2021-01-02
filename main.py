@@ -22,3 +22,6 @@ def send_email():
     message = phoneMessage(data, premessage)
     print(message)
     sendMessage(message, sender_email, receiver_email, password)
+
+
+task.start()
