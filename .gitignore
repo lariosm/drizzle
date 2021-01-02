@@ -1,4 +1,4 @@
-*.env
+.env
 example.json
 __pycache__
 .vscode/
