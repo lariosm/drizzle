@@ -21,6 +21,7 @@ def send_email():
     premessage = """Subject: Weather Update (Baltazar Ortiz)
 
     """
+    message = phoneMessage(data, premessage)
     sendMessage(message, sender_email, receiver_email, password)
 
 
