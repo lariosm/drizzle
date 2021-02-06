@@ -22,7 +22,7 @@ def get_hourly_at(data, hour):
     return data["hourly"][hour]["dt"]
 
 
-def phone_message(data, message):
+def compose_message(data, message):
     weather_tomorrow = get_tomorrows_forecast(data)
 
     if is_raining(weather_tomorrow["id"]):

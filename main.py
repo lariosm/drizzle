@@ -1,6 +1,6 @@
 # Baltazar Ortiz
 import os
-from parser import phone_message
+from parser import compose_message
 from weather_email import send_message
 from getData import get_weather_data
 from apscheduler.schedulers.blocking import BlockingScheduler
@@ -21,7 +21,7 @@ def send_email():
     premessage = """Subject: Weather Update (Baltazar Ortiz)
 
     """
-    message = phone_message(data, premessage)
+    message = compose_message(data, premessage)
     send_message(message, sender_email, receiver_email, password)
 
 
