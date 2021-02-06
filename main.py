@@ -1,8 +1,8 @@
 # Baltazar Ortiz
 import os
-from parser import phoneMessage
-from weather_email import sendMessage
-from getData import getWeatherData
+from parser import phone_message
+from weather_email import send_message
+from getData import get_weather_data
 from apscheduler.schedulers.blocking import BlockingScheduler
 from pytz import utc
 
@@ -17,12 +17,12 @@ task = BlockingScheduler(timezone=utc)
 # Sends out an email every day at 17:30 (9:30 AM Pacific time)
 @task.scheduled_job('cron', hour=17, minute=30)
 def send_email():
-    data = getWeatherData(api_key)
+    data = get_weather_data(api_key)
     premessage = """Subject: Weather Update (Baltazar Ortiz)
 
     """
-    message = phoneMessage(data, premessage)
-    sendMessage(message, sender_email, receiver_email, password)
+    message = phone_message(data, premessage)
+    send_message(message, sender_email, receiver_email, password)
 
 
 task.start()

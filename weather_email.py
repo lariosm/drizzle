@@ -1,6 +1,8 @@
-import smtplib, ssl
+import smtplib
+import ssl
 
-def sendMessage(message, sender_email, receiver_email, password):
+
+def send_message(message, sender_email, receiver_email, password):
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
 
